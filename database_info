@@ -1,0 +1,20 @@
+# Server Credentials
+server_id
+username
+password
+
+# Server info
+server_id
+server_name
+ip_address
+
+# Account info
+server_id
+account_id
+account_name
+folder_location_backup
+folder_location_latest
+folder_location_rollback
+file_size_reference
+record_count_reference
+
