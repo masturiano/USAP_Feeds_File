@@ -48,7 +48,9 @@ else
 	";
 	$query_execute = mysql_query($query_select);
 }
-mysql_close($link);
+
+// mysql_close($link);
+
 # Start ssh2 connection to server
 if($ssh = ssh2_connect('174.129.233.96', 22)) 
 {
@@ -60,6 +62,9 @@ if($ssh = ssh2_connect('174.129.233.96', 22))
     	# loop table server credentials
     	while ($fetch_array_row = mysql_fetch_array($query_execute)) 
     	{
+    		# Display account name
+    		echo "<b>ACCOUNT NAME : </b>";
+    		echo $fetch_array_row['account_name'];
     		# field assign to variable
     		$folder_location_latest = $fetch_array_row['folder_location_latest'];
 			# open account folder location
@@ -72,7 +77,6 @@ if($ssh = ssh2_connect('174.129.233.96', 22))
 							<td><b>SIZE</b></td>
 							<td><b>DATE CREATED</b></td>
 							<td><b>TIME CREATED</b></td>
-							<td><b>RECORD COUNT</b></td>
 						</tr>
 				<?php
 				while ($file = readdir($dir_handler)) 
@@ -103,6 +107,7 @@ if($ssh = ssh2_connect('174.129.233.96', 22))
 				    	# file time created
 				    	$file_time_created = date('h:i:s A',($file_created));
 				    	# file line count
+				    	/*
 				    	$file_line_count = 0;
 						$file_handler = fopen($file_info, "r");
 						while(!feof($file_handler))
@@ -119,19 +124,18 @@ if($ssh = ssh2_connect('174.129.233.96', 22))
 						{
 							$file_line_count = (int)$file_line_count - 1;
 						}
+						*/
 				    	?>
 				    		<td><?=formatSizeUnits($file_size);?></td>
 				    		<td><?=$file_date_created;?></td>
 				    		<td><?=$file_time_created;?></td>
-				    		<td><?=$file_line_count;?></td>
-				    	<?php
-						?>
 				    	</tr>
 				    	<?php
 					}
 				}
 				?>
 					</table>
+					<br/>
 				<?php
 			}
 			else
