@@ -12,7 +12,7 @@ create table server_credentials(
     password varchar(50),
     primary key(server_id)
 );
-insert into server_credentials values(3,'masturiano','masturianousap1q2w');
+insert into server_credentials values(1,'masturiano','masturianousap1q2w');
 select * from server_credentials;
 
 # Server info
@@ -25,7 +25,7 @@ create table server_info(
     ip_address varchar(15),
     primary key(server_id)
 );
-insert into server_info values(3,'EC2FEEDGEN03','174.129.233.96');
+insert into server_info values(1,'EC2FEEDGEN01','174.129.233.71');
 select * from server_info;
 
 # Account type
@@ -73,14 +73,23 @@ insert into account_info(
     record_count_reference
 )
 values(
-	3,
+	1,
     2,
-    'dam_ci_details',
-    'discount auto mirror channel inteligence details',
-    'data/aopi/feeds_longbow/output/dam_ci_details/backup',
-    'data/aopi/feeds_longbow/output/dam_ci_details/latest',
-    'data/aopi/feeds_longbow/output/dam_ci_details/rollback',
-    '1.GB',
-    '1000000'
+    'JCW_IR',
+    'jc whitney impact radius',
+    'data/aopi/feeds_longbow/output/jcw_ir_sku/backup',
+    'data/aopi/feeds_longbow/output/jcw_ir_sku/latest',
+    'data/aopi/feeds_longbow/output/jcw_ir_sku/rollback',
+    '0',
+    '0'
 );
 select * from account_info;
+delete from account_info where account_id = 3;
+
+
+select * from account_info 
+where 
+account_id in (1,2,5,6)
+and (account_name != 'dam_ci_details' 
+and account_name != 'stt_ci_details' 
+and account_name != 'JCW_DETAILS')

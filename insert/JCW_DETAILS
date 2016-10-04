@@ -1,0 +1,22 @@
+insert into account_info(
+    server_id,
+    type_id,
+    account_name,
+    account_description,
+    folder_location_backup,
+    folder_location_latest,
+    folder_location_rollback,
+    file_size_reference,
+    record_count_reference
+)
+values(
+    1,
+    1,
+    'JCW_DETAILS',
+    'stylin tracks channel inteligence details',
+    'data/aopi/feeds_longbow/WhitneyGroup/jcwhitney/channel_intelligence/production/data/output/backup',
+    'data/aopi/feeds_longbow/WhitneyGroup/jcwhitney/channel_intelligence/production/data/output/latest',
+    'data/aopi/feeds_longbow/WhitneyGroup/jcwhitney/channel_intelligence/production/data/output/rollback',
+    '3650722201',
+    '2000001'
+);

@@ -1,0 +1,114 @@
+Gen01 Non Google
+
+function getDir {
+	declare -A dirAccount
+	dirAccount=([JCW_LC]="/data/aopi/feeds_longbow/jcw_affiliates/jcw.link_connector.production/data/output/latest" [JCW_PJ]="/data/aopi/feeds_longbow/jcw_affiliates/jcw.pepperjam.production/data/output/latest" [JCW_CJ]="/data/aopi/feeds_longbow/jcw_affiliates/jcw.commission_junction.production/data/output/latest" [JCW_CRITEO]="/var/www/html/feeds_zf2feeds_production/data/output/jcw_criteo/latest" [JCW_IR]="/data/aopi/feeds_longbow/output/jcw_ir_sku/latest")
+	cd ${dirAccount[$1]}
+	echo "================================================================================="
+	echo "$1 :"
+        	ls -lah *
+		du -sh *.txt
+}
+
+
+Gen04 Google
+
+function getDir {
+	declare -A dirAccount
+	dirAccount=([CP_SKU]="/data/aopi/feeds_longbow/carparts/froogle_sku_ci/production/data/latest" [CP_DETAILS]="/data/aopi/feeds_longbow/carparts/froogle_pla/channel_intelegence/scripts/data/latest" [APW_DETAILS]="/data/aopi/feeds_longbow/autopartswarehouse/froogle_Detailed.pla/production/data/output/latest/apw_ci" [DBP_SKU]="/data/aopi/feeds_longbow/output/dbp_ci/latest" [DES_SKU]="/data/aopi/feeds_longbow/output/des_sku/latest" [DAR_SKU]="/data/aopi/feeds_longbow/output/dar_sku/latest" [DBK_SKU]="/data/aopi/feeds_longbow/output/dbk_sku/latest" [DCC_SKU]="/data/aopi/feeds_longbow/output/dcc_ci_sku/latest" [DES_DETAILS]="/data/aopi/feeds_longbow/output/des_details/latest" [DAR_DETAILS]="/data/aopi/feeds_longbow/output/dar_details/latest" [DBK_DETAILS]="/data/aopi/feeds_longbow/output/dbk_details/latest" [CPO_SKU]="/data/aopi/feeds_longbow/output/cpo_sku/latest")
+	cd ${dirAccount[$1]}
+	echo "=================================================================================="
+	echo "$1 LIST"
+	ls -lah *.txt
+        ls -lah *.zip
+	du -sh *.txt
+}
+
+
+Gen04 Non Google
+
+function getDir {
+        declare -A dirAccount
+        dirAccount=([APW_LC]="/data/aopi/feeds_longbow/apw_affiliates/apw.link_connector.staging/data/output/latest" [APW_LS]="/data/aopi/feeds_longbow/apw_affiliates/apw.linkshare.staging/data/output/latest" [APW_PJ]="/data/aopi/feeds_longbow/apw_affiliates/apw.pepperjam.staging/data/output/latest" [APW_CRITEO]="/data/aopi/feeds_longbow/autopartswarehouse/criteo/criteo.staging/data/" [APW_ECN]="/data/aopi/feeds_longbow/autopartswarehouse/ebay_commerce_network/production/application/data/output/latest" [APW_FACEBOOK]="/var/www/html/feeds_zf2feeds_production/data/output/apw_sku_facebook/latest/" [CP_FACEBOOK]="/var/www/html/feeds_zf2feeds_production/data/output/cp_facebook/latest/" [DBP_IR]="/var/www/html/feeds_zf2feeds_production/data/output/dbp_ir_sku/latest/")
+
+Gen06 Google
+
+function getDir {
+	declare -A dirAccount
+	dirAccount=([DBP_SKU]="/data/aopi/feeds_longbow/output/dbp_ci/latest" [DAM_DETAILS]="/var/www/html/feeds_zf2feeds_production/data/output/dam_ci_details/latest" [DAM_SKU]="/var/www/html/feeds_zf2feeds_production/data/output/dam_ci_sku/latest/" [DCC_DETAILS]="/var/www/html/feeds_zf2feeds_production/data/output/dcc_ci_details/latest" [PT_DETAILS]="/var/www/html/feeds_zf2feeds_production/data/output/pt_ci_details/latest" [PT_SKU]="/var/www/html/feeds_zf2feeds_production/data/output/pt_ci_sku/latest" [DAM_DETAILS_CRITEO]="/var/www/html/feeds_zf2feeds_production/data/output/dam_ci_details/latest" [DAM_SKU_CRITEO]="/var/www/html/feeds_zf2feeds_production/data/output/dam_ci_sku/latest/" [DES_DETAILS]="/data/aopi/feeds_longbow/output/des_details/latest" [DAR_DETAILS]="/data/aopi/feeds_longbow/output/dar_details/latest" [DBK_DETAILS]="/data/aopi/feeds_longbow/output/dbk_details/latest")
+	cd ${dirAccount[$1]}
+	echo "================================================================================="
+	echo "UPLOADING $1"
+	ls -lah *.txt
+        ls -lah *.zip
+	du -sh *.txt
+}
+
+
+
+Gen06 Non Google
+
+function getDir {
+        echo "================================================================================="
+        echo "UPLOADING $1"
+        if [ $1 = "JCW_FM" ]; then
+		dirAccount="/data/aopi/feeds_longbow/jcw.frugal_mechanic.staging/data/output/latest"
+        elif [ $1 = "STT_FM" ]; then
+                dirAccount="/data/aopi/feeds_longbow/stt.frugal_mechanic.staging/data/output/latest"
+        elif [ $1 = "APW_FM" ]; then
+                dirAccount="/data/aopi/feeds_longbow/auto_frugalmechanic/apw.frugal_mechanic.staging_git/data/output/latest"
+        elif [ $1 = "CP_FM" ]; then
+                dirAccount="/data/aopi/feeds_longbow/auto_frugalmechanic/cp.frugal_mechanic.staging_git/data/output/latest"
+        elif [ $1 = "PT_FM" ]; then
+                dirAccount="/data/aopi/feeds_longbow/auto_frugalmechanic/pt.frugal_mechanic.staging_git/data/output/latest"
+        elif [ $1 = "USAP_FM" ]; then
+                dirAccount="/data/aopi/feeds_longbow/auto_frugalmechanic/usap.frugal_mechanic.staging_git/data/output/latest"
+        else
+                echo "Unkown parameter"
+	fi
+	cd $dirAccount
+	   ls -lah *.csv
+                du -sh *.csv
+
+}
+
+
+Gen07 Google
+
+function uploadFeeds {
+	if [ "$1" = "DBP_DETAILS" ]; then
+		dirAccount="/data/aopi/feeds_longbow/discountbodyparts/froogle_pla/froogle_pla.ci/data/latest" 
+	elif [ "$1" = "APW_SKU" ]; then
+		dirAccount="/data/aopi/feeds_longbow/apw_sku.pla/production/data/apw_ci"
+	fi
+	cd ${dirAccount[$1]}
+	echo "=================================================================================="
+	echo "UPLOADING $1"
+	ls -lah *.txt
+        ls -lah *.zip
+	du -sh *.txt
+	sh upload.sh
+}
+
+Gen07 Non Google
+
+function getDir {
+        echo "================================================================================="
+        echo "UPLOADING $1"
+        if [ $1 = "CP_ECN" ]; then
+		cd /data/aopi/feeds_longbow/WhitneyGroup/carparts/ebay_commerce_network.production/scripts/	
+		sh verifiedFeedFile.sh
+        elif [ $1 = "DBP_BING" ]; then
+		cd /data/aopi/feeds_longbow/discountbodyparts/bing/production/scripts/
+		sh verifiedFeedFile.sh
+	elif [ $1 = "PT_CJ" ]; then
+		cd /data/aopi/feeds_longbow/pt.commission_junction.staging/application
+                php generate.php -a upload
+	elif [ $1 = "CP_CJ" ]; then
+		cd /data/aopi/feeds_longbow/cp.commission_junction.staging/application
+		php generate.php -a upload
+	elif [ $1 = "APW_CJ" ]; then
+		cd /data/aopi/feeds_longbow/apw.commission_junction.staging/application
+		php generate.php -a upload
+        fi
+}
