@@ -26,8 +26,8 @@ left join
 left join
 	account_type at
     on at.type_id = ai.type_id
--- where 
-	-- sc.server_id = 3
+where 
+	sc.server_id = 4
 order by
 	si.server_name,
     at.type_name,

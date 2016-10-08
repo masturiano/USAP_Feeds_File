@@ -12,7 +12,8 @@ create table server_credentials(
     password varchar(50),
     primary key(server_id)
 );
-insert into server_credentials values(1,'masturiano','masturianousap1q2w');
+insert into server_credentials values(2,'masturiano','masturianousap1q2w');
+update server_credentials set password = 'masturianousap1q2w' where server_id = 2;
 select * from server_credentials;
 
 # Server info
@@ -25,7 +26,7 @@ create table server_info(
     ip_address varchar(15),
     primary key(server_id)
 );
-insert into server_info values(1,'EC2FEEDGEN01','174.129.233.71');
+insert into server_info values(8,'EC2FEEDGEN08','75.101.154.25');
 select * from server_info;
 
 # Account type
@@ -73,18 +74,18 @@ insert into account_info(
     record_count_reference
 )
 values(
-	1,
+	4,
     2,
-    'JCW_IR',
-    'jc whitney impact radius',
-    'data/aopi/feeds_longbow/output/jcw_ir_sku/backup',
-    'data/aopi/feeds_longbow/output/jcw_ir_sku/latest',
-    'data/aopi/feeds_longbow/output/jcw_ir_sku/rollback',
+    'DBP_IR',
+    'discount body parts impact radius',
+    'var/www/html/feeds_zf2feeds_production/data/output/dbp_ir_sku/backup',
+    'var/www/html/feeds_zf2feeds_production/data/output/dbp_ir_sku/latest',
+    'var/www/html/feeds_zf2feeds_production/data/output/dbp_ir_sku/rollback',
     '0',
     '0'
 );
-select * from account_info;
-delete from account_info where account_id = 3;
+select * from account_info where server_id = 4 and type_id = 2;
+delete from account_info where account_id = 13;
 
 
 select * from account_info 
